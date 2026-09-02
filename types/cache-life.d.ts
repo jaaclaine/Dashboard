@@ -1,15 +1,15 @@
 // Type definitions for Next.js cacheLife configs
 
 declare module 'next/cache' {
-  export { unstable_cache } from 'next/dist/server/web/spec-extension/unstable-cache'
-  export {
-    updateTag,
-    revalidateTag,
-    revalidatePath,
-    refresh,
-  } from 'next/dist/server/web/spec-extension/revalidate'
-  export { unstable_noStore } from 'next/dist/server/web/spec-extension/unstable-no-store'
   export { io } from 'next/dist/server/request/io'
+  export {
+    refresh,
+    revalidatePath,
+    revalidateTag,
+    updateTag,
+  } from 'next/dist/server/web/spec-extension/revalidate'
+  export { unstable_cache } from 'next/dist/server/web/spec-extension/unstable-cache'
+  export { unstable_noStore } from 'next/dist/server/web/spec-extension/unstable-no-store'
 
   
     /**
