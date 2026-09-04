@@ -1,9 +1,12 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-import { Figtree,Geist, Geist_Mono } from 'next/font/google'
+import { Figtree, Geist, Geist_Mono } from 'next/font/google'
 
+import { AppSidebar } from '@/components/layout/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
@@ -39,7 +42,13 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         >
             <body className='min-h-full flex flex-col'>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-                    {children}
+                    <SidebarProvider>
+                        <AppSidebar />
+                        <main>
+                            <SidebarTrigger />
+                            <TooltipProvider>{children}</TooltipProvider>{' '}
+                        </main>
+                    </SidebarProvider>
                 </ThemeProvider>
             </body>
         </html>
