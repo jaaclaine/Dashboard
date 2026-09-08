@@ -1,11 +1,10 @@
-import { BookMarked, ChevronDown, Home, Plus } from 'lucide-react'
+import { BookMarked, ChevronDown, ClockCheck, LayoutDashboard, ListChecks, Package, Settings } from 'lucide-react'
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupAction,
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarHeader,
@@ -18,7 +17,7 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarHeader>
                 <div className='flex w-full items-center gap-2 p-2 text-left'>
-                    <div className='flex aspect-square size-10 items-center justify-center rounded-md bg-primary text-rose-900'>
+                    <div className='flex aspect-square size-10 items-center justify-center rounded-md bg-primary text-primary-foreground'>
                         <BookMarked />
                     </div>
                     <div className='grid flex-1 text-left text-sm leading-tight'>
@@ -28,24 +27,42 @@ export function AppSidebar() {
                 </div>
             </SidebarHeader>
             <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
-                    <SidebarGroupAction>
-                        <Plus /> <span className='sr-only'>Add Project</span>
-                    </SidebarGroupAction>
-                </SidebarGroup>
-
                 <Collapsible defaultOpen className='group/collapsible'>
                     <SidebarGroup>
                         <SidebarGroupLabel render={<CollapsibleTrigger />}>
-                            Help
+                            Overview
                             <ChevronDown className='ml-auto transition-transform group-data-open/collapsible:rotate-180' />
                         </SidebarGroupLabel>
                         <CollapsibleContent>
                             <SidebarGroupContent>
                                 <SidebarMenuButton render={<a href='#' />}>
-                                    <Home />
-                                    <span>Home</span>
+                                    <LayoutDashboard />
+                                    <span>Dashboard</span>
+                                </SidebarMenuButton>
+                                <SidebarMenuButton render={<a href='#' />}>
+                                    <ClockCheck />
+                                    <span>Real-time</span>
+                                </SidebarMenuButton>
+                            </SidebarGroupContent>
+                        </CollapsibleContent>
+                    </SidebarGroup>
+                </Collapsible>
+
+                <Collapsible className='group/collapsible'>
+                    <SidebarGroup>
+                        <SidebarGroupLabel render={<CollapsibleTrigger />}>
+                            Management
+                            <ChevronDown className='ml-auto transition-transform group-data-open/collapsible:rotate-180' />
+                        </SidebarGroupLabel>
+                        <CollapsibleContent>
+                            <SidebarGroupContent>
+                                <SidebarMenuButton render={<a href='#' />}>
+                                    <ListChecks />
+                                    <span>Orders</span>
+                                </SidebarMenuButton>
+                                <SidebarMenuButton render={<a href='#' />}>
+                                    <Package />
+                                    <span>Products</span>
                                 </SidebarMenuButton>
                             </SidebarGroupContent>
                         </CollapsibleContent>
@@ -54,8 +71,8 @@ export function AppSidebar() {
 
                 <SidebarMenuItem>
                     <SidebarMenuButton render={<a href='#' />}>
-                        <Home />
-                        <span>Home</span>
+                        <Settings />
+                        <span>Settings</span>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarContent>

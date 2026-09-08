@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@import './typeset.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,6 +42,7 @@
 
     --color-success: var(--success);
     --color-error: var(--error);
+    --color-warning: var(--warning);
 
     --color-popover-foreground: var(--popover-foreground);
     --color-popover: var(--popover);
@@ -97,7 +99,8 @@
     --sidebar-ring: oklch(0.708 0 0);
 
     --success: oklch(0.6945 0.1436 164.9);
-    --error: oklch(0.6478 0.2043 10.69);
+    --error: oklch(0.7469 0.1545 16.16);
+    --warning: oklch(0.8319 0.1289 79.77);
 }
 
 .dark {
@@ -141,7 +144,17 @@
     --sidebar-ring: oklch(0.556 0 0);
 
     --success: oklch(0.6945 0.1436 164.9);
-    --error: oklch(0.6478 0.2043 10.69);
+    --error: oklch(0.7469 0.1545 16.16);
+    --warning: oklch(0.8319 0.1289 79.77);
+}
+
+.typeset-docs {
+    --typeset-font-body: var(--font-nunito-sans);
+    --typeset-font-heading: var(--font-public-sans);
+    --typeset-font-mono: var(--font-geist-mono);
+    --typeset-size: 15px;
+    --typeset-leading: 1.75;
+    --typeset-flow: 1.25em;
 }
 
 @layer base {

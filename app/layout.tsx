@@ -1,24 +1,28 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-import { Figtree, Geist, Geist_Mono } from 'next/font/google'
+import { Geist_Mono, Nunito_Sans, Public_Sans } from 'next/font/google'
 
+import { Navigation } from '@/components/layout/navigation'
 import { AppSidebar } from '@/components/layout/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { SidebarProvider } from '@/components/ui/sidebar'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
+const nunitoSans = Nunito_Sans({
+    subsets: ['latin'],
+    variable: '--font-nunito-sans'
+})
 
-const geistSans = Geist({
-    variable: '--font-geist-sans',
-    subsets: ['latin']
+const publicSans = Public_Sans({
+    subsets: ['latin'],
+    variable: '--font-public-sans'
 })
 
 const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
-    subsets: ['latin']
+    subsets: ['latin'],
+    variable: '--font-geist-mono'
 })
 
 export const metadata: Metadata = {
@@ -33,20 +37,20 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             className={cn(
                 'h-full',
                 'antialiased',
-                geistSans.variable,
+                nunitoSans.variable,
                 geistMono.variable,
                 'font-sans',
-                figtree.variable
+                publicSans.variable
             )}
             suppressHydrationWarning
         >
-            <body className='min-h-full flex flex-col'>
+            <body className='min-h-full flex flex-col typeset typeset-docs'>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
                     <SidebarProvider>
                         <AppSidebar />
-                        <main>
-                            <SidebarTrigger />
-                            <TooltipProvider>{children}</TooltipProvider>{' '}
+                        <main className='w-full'>
+                            <Navigation />
+                            <TooltipProvider>{children}</TooltipProvider>
                         </main>
                     </SidebarProvider>
                 </ThemeProvider>
