@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import { Geist_Mono, Nunito_Sans, Public_Sans } from 'next/font/google'
+import { StrictMode } from 'react'
 
 import { Navigation } from '@/components/layout/navigation'
 import { AppSidebar } from '@/components/layout/sidebar'
@@ -45,15 +46,17 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             suppressHydrationWarning
         >
             <body className='min-h-full flex flex-col typeset typeset-docs'>
-                <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-                    <SidebarProvider>
-                        <AppSidebar />
-                        <main className='w-full'>
-                            <Navigation />
-                            <TooltipProvider>{children}</TooltipProvider>
-                        </main>
-                    </SidebarProvider>
-                </ThemeProvider>
+                <StrictMode>
+                    <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+                        <SidebarProvider>
+                            <AppSidebar />
+                            <main className='w-full'>
+                                <Navigation />
+                                <TooltipProvider>{children}</TooltipProvider>
+                            </main>
+                        </SidebarProvider>
+                    </ThemeProvider>
+                </StrictMode>
             </body>
         </html>
     )
